@@ -2,6 +2,11 @@
 ## Platform
 Our experiments are conducted on a platform with  Intel(R) Xeon(R) Gold 6248R CPU @ 3.00GHz and an NVIDIA GeForce RTX 3090 GPU.
 
+## Environment
+```shell
+pip install -r requirements.txt
+```
+
 ## Files
 - `eRisk2018/RSDD/TRT`：contain the data processing procedure
     - `preprocess.py`：process the raw text
@@ -16,8 +21,8 @@ Our experiments are conducted on a platform with  Intel(R) Xeon(R) Gold 6248R CP
 - `statsitics.py`：analyze information from three datasets
 
 ## Running
+### Within-dataset setting
 ```shell
-# within-dataset setting
 ran=$((1000 + RANDOM % 9000))
 CUDA_VISIBLE_DEVICES=0 python -u run.py \
           --seed $ran \
@@ -40,9 +45,10 @@ CUDA_VISIBLE_DEVICES=0 python -u run.py \
           --num_routing 3 \
           --output_dim 2 \
           --output_atoms 100
+```
 
-
-# cross-dataset setting
+### Cross-dataset setting
+```
 ran=4820
 CUDA_VISIBLE_DEVICES=0 python -u run.py \
           --seed $ran \
